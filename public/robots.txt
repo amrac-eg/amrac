@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://artx.sa
+
+# Sitemaps
+Sitemap: https://artx.sa/sitemap.xml
