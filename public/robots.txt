@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://artx.sa
+Host: https://amrac.netlify.app
 
 # Sitemaps
-Sitemap: https://artx.sa/sitemap.xml
+Sitemap: https://amrac.netlify.app/sitemap.xml

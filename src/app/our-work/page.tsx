@@ -20,25 +20,24 @@ const AllProjectsPage = async () => {
           priority
         />{" "}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                  <div className="text-center text-white px-4">
-
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">مشاريعنا</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
-            نؤمن بأن كل مشروع يمثل فرصة جديدة للتميز والإبداع
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link
-              href={`/${Routes.CONTACT}`}
-              className="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition"
-            >
-              تواصل معنا <FaPhone />
-            </Link>
-            <Link
-              href={`/${Routes.SERVICES}`}
-              className="flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition"
-            >
-              خدماتنا <FaArrowLeft />
-            </Link>
+          <div className="text-center text-white px-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">مشاريعنا</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+              نؤمن بأن كل مشروع يمثل فرصة جديدة للتميز والإبداع
+            </p>
+            <div className="flex justify-center gap-4">
+              <Link
+                href={`/${Routes.CONTACT}`}
+                className="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition"
+              >
+                تواصل معنا <FaPhone />
+              </Link>
+              <Link
+                href={`/${Routes.SERVICES}`}
+                className="flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition"
+              >
+                خدماتنا <FaArrowLeft />
+              </Link>
             </div>
           </div>
         </div>
@@ -112,7 +111,7 @@ export async function generateMetadata() {
     title: "ArtX - مشاريعنا",
     description: "نقدم حلولاً هندسية مبتكرة تلبي أعلى معايير الجودة والكفاءة",
     alternates: {
-      canonical: "https://artx.sa/our-work",
+      canonical: "https://amrac.netlify.app/our-work",
     },
   };
 }

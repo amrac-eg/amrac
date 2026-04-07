@@ -29,7 +29,7 @@ export const addContact = async (prevState: unknown, formData: FormData) => {
         message: data.message,
       },
     });
-    await sendContactEmail(data);
+    // await sendContactEmail(data);
     revalidatePath(`/${Routes.ADMIN}/${Pages.CONTACT_ADMIN}`);
     revalidatePath(`/${Routes.CONTACT}`);
     return {

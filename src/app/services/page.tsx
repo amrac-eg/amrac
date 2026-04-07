@@ -5,9 +5,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import imagebg from "../../../public/images/digital-increasing-bar-graph-with-businessman-hand-overlay.jpg";
 import { getServices } from "@/server/db/services";
 
-export default async  function ServicesPage() {
-    const services = await getServices();
-  
+export default async function ServicesPage() {
+  const services = await getServices();
+
   return (
     <div className="bg-gray-50 mt-14">
       {/* Hero Section with Background Image */}
@@ -21,9 +21,12 @@ export default async  function ServicesPage() {
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">حلولنا المتكاملة</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              حلولنا المتكاملة
+            </h1>
             <p className="text-xl max-w-2xl mx-auto">
-              نقدم مجموعة متكاملة من الخدمات الهندسية التي تلبي جميع احتياجاتك بدقة واحترافية
+              نقدم مجموعة متكاملة من الخدمات الهندسية التي تلبي جميع احتياجاتك
+              بدقة واحترافية
             </p>
           </div>
         </div>
@@ -43,7 +46,10 @@ export default async  function ServicesPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
-            <Card key={service.id} className="overflow-hidden group hover:shadow-lg transition-all">
+            <Card
+              key={service.id}
+              className="overflow-hidden group hover:shadow-lg transition-all"
+            >
               <div className="relative h-60 overflow-hidden">
                 <Image
                   src={service.image ?? ""}
@@ -54,12 +60,13 @@ export default async  function ServicesPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
               </div>
               <CardHeader>
-                <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  {service.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">{service.description}</p>
               </CardContent>
-
             </Card>
           ))}
         </div>
@@ -68,12 +75,17 @@ export default async  function ServicesPage() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-primary to-teal-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">مستعد لبدء مشروعك؟</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            مستعد لبدء مشروعك؟
+          </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             تواصل مع فريقنا اليوم للحصول على استشارة مجانية وتقييم احتياجاتك
           </p>
           <Link href="/contact">
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg"
+            >
               تواصل معنا الآن
             </Button>
           </Link>
@@ -110,14 +122,13 @@ export default async  function ServicesPage() {
   );
 }
 
-export async function generateMetadata(){
-  return(
-    {
-      title: "ArtX - خدماتنا",
-      description: "نحن نقدم خدمات مصممة خصيصًا لتحقيق استراتيجية تميز واحتياجاتك",
-      alternates: {
-        canonical: "https://artx.sa/services",
-      }
-    }
-  )
+export async function generateMetadata() {
+  return {
+    title: "ArtX - خدماتنا",
+    description:
+      "نحن نقدم خدمات مصممة خصيصًا لتحقيق استراتيجية تميز واحتياجاتك",
+    alternates: {
+      canonical: "https://amrac.netlify.app/services",
+    },
+  };
 }

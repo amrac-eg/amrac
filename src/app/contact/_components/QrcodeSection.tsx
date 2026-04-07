@@ -143,7 +143,7 @@ export async function generateMetadata() {
     title: "ArtX - تواصل معنا",
     description: "تواصل معنا اليوم وسنكون سعداء بمساعدتك في تنفيذ مشروعك",
     alternates: {
-      canonical: "https://artx.sa/contact",
+      canonical: "https://amrac.netlify.app/contact",
     },
   };
 }

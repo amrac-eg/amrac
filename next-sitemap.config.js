@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://artx.sa",
+  siteUrl: "https://amrac.netlify.app",
   generateRobotsTxt: true,
   generateIndexSitemap: false, // لو عايز sitemap واحد فقط
   outDir: "./public",

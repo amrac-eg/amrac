@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بالمملكة العربية السعودية للاستشارات الهندسية",
   ],
   icons: {
-    icon: "https://artx.sa/favicon.png",
-    shortcut: "https://artx.sa/favicon.png",
-    apple: [{ url: "https://artx.sa/favicon.png" }],
+    icon: "https://amrac.netlify.app/favicon.png",
+    shortcut: "https://amrac.netlify.app/favicon.png",
+    apple: [{ url: "https://amrac.netlify.app/favicon.png" }],
     other: {
       rel: "apple-touch-icon-precomposed",
-      url: "https://artx.sa/favicon.png",
+      url: "https://amrac.netlify.app/favicon.png",
     },
   },
   authors: [
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
       "تمتد جذور شركة أمراك للاستشارات الهندسية لأكثر من10عامًا من الخبرة المتراكمة في السوق الهندسي، حيث ساهمت خلال هذه الفترة في تصميم والإشراف على عدد من أبرز المشاريع المعمارية في مختلف أنحاء المملكة.",
     images: [
       {
-        url: "https://artx.sa/favicon.png",
+        url: "https://amrac.netlify.app/favicon.png",
         width: 800,
         height: 600,
         alt: "شركة أمراك للاستشارات الهندسية",
       },
     ],
-    url: "https://artx.sa",
+    url: "https://amrac.netlify.app",
     siteName: "شركة أمراك للاستشارات الهندسية",
     type: "website",
   },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: "شركة أمراك للاستشارات الهندسية",
     description: "شركة أمراك للاستشارات الهندسية",
     siteId: "@artx_sa",
-    images: "https://artx.sa/favicon.png",
+    images: "https://amrac.netlify.app/favicon.png",
   },
   applicationName: "شركة أمراك للاستشارات الهندسية",
 };
