@@ -3,7 +3,7 @@ import { Routes } from "@/components/constants/enums";
 import Link from "@/components/link";
 import { FaEye, FaArrowLeft, FaPhone, FaEnvelope } from "react-icons/fa";
 import { getProjects } from "@/server/db/ourWork";
-import imagebg from "../../../public/images/computer-display-with-3d-render-software-architectural-building-complex-architect-modern-office-desktop-screen-desk-showing-urban-planning-architecture-construction-plans.jpg";
+import imagebg from "../../../../public/images/computer-display-with-3d-render-software-architectural-building-complex-architect-modern-office-desktop-screen-desk-showing-urban-planning-architecture-construction-plans.jpg";
 
 const AllProjectsPage = async () => {
   const ourWork = await getProjects();

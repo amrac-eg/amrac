@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import imagebg from "../../../public/images/digital-increasing-bar-graph-with-businessman-hand-overlay.jpg";
+import imagebg from "../../../../public/images/digital-increasing-bar-graph-with-businessman-hand-overlay.jpg";
 import { getServices } from "@/server/db/services";
 
 export default async function ServicesPage() {
