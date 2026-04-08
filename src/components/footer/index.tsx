@@ -6,7 +6,6 @@ import {
   FaInstagram,
   FaMapMarkerAlt,
   FaEnvelope,
-  FaSnapchatGhost,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 
@@ -33,30 +32,34 @@ const Footer = async () => {
         {/* معلومات الشركة */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Image src={logo} alt="ArtX Logo" width={40} height={40} />
+            <Image src={logo} alt="AMRAC Logo" width={40} height={40} />
             <h3 className="text-xl font-bold">أمراك</h3>
           </div>
           <p className="text-white/80">
             شركة رائدة في مجال الاستشارات الهندسية والتخطيط العمراني، نقدم
             حلولاً إبداعية تلبي أعلى معايير الجودة.
           </p>
+
+          {/* السوشيال */}
           <div className="flex gap-4 text-xl pt-2">
             <Link
-              href="https://www.facebook.com/ArtX.SA"
+              href="https://www.facebook.com/amrac_eg"
               target="_blank"
               aria-label="فيسبوك"
             >
               <FaFacebook className="hover:text-amber-400 transition-colors" />
             </Link>
+
             <Link
-              href="https://x.com/ArtX_SA"
+              href="https://x.com/amrac_eg"
               target="_blank"
               aria-label="تويتر"
             >
               <XIcon />
             </Link>
+
             <Link
-              href="https://www.instagram.com/ArtX_S.A"
+              href="https://www.instagram.com/amrac_eg"
               target="_blank"
               aria-label="انستقرام"
             >
@@ -64,18 +67,11 @@ const Footer = async () => {
             </Link>
 
             <Link
-              href="https://wa.me/966502207777"
+              href="https://wa.me/201222717458"
               target="_blank"
               aria-label="واتساب"
             >
               <FaWhatsapp className="hover:text-amber-400 transition-colors" />
-            </Link>
-            <Link
-              href="https://www.snapchat.com/add/artx_sa"
-              target="_blank"
-              aria-label="سناب شات"
-            >
-              <FaSnapchatGhost className="hover:text-amber-400 transition-colors" />
             </Link>
           </div>
         </div>
@@ -135,28 +131,27 @@ const Footer = async () => {
           <div className="space-y-3">
             <p className="flex items-center gap-3">
               <MdPhoneIphone className="text-amber-400" />
-              <span>0502207777</span>
+              <span>01222717458</span>
             </p>
 
             <p className="flex items-center gap-3">
               <FaPhone className="text-amber-400" />
-              <span> 0133302922</span>
+              <span>0452843333</span>
             </p>
+
             <p className="flex items-center gap-3">
               <FaFax className="text-amber-400" />
-              <span> 0133302922</span>
+              <span>0452843333</span>
             </p>
+
             <p className="flex items-center gap-3">
               <FaEnvelope className="text-amber-400" />
-              <span>info@artx.sa</span>
+              <span>amrac@mail.com</span>
             </p>
+
             <p className="flex items-start gap-3 leading-relaxed">
               <FaMapMarkerAlt className="text-amber-400 mt-1" />
-              <span>
-                شارع أبو بكر الصديق، حي المنار
-                <br />
-                الدمام، المملكة العربية السعودية
-              </span>
+              <span>شارع الجمهورية، ادكو</span>
             </p>
           </div>
         </div>
@@ -178,6 +173,7 @@ const Footer = async () => {
 };
 
 export default Footer;
+
 const XIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

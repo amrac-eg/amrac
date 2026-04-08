@@ -108,7 +108,7 @@ export default AllProjectsPage;
 
 export async function generateMetadata() {
   return {
-    title: "ArtX - مشاريعنا",
+    title: "AMRAC - مشاريعنا",
     description: "نقدم حلولاً هندسية مبتكرة تلبي أعلى معايير الجودة والكفاءة",
     alternates: {
       canonical: "https://amrac.netlify.app/our-work",

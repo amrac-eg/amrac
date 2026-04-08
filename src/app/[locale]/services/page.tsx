@@ -124,7 +124,7 @@ export default async function ServicesPage() {
 
 export async function generateMetadata() {
   return {
-    title: "ArtX - خدماتنا",
+    title: "AMRAC - خدماتنا",
     description:
       "نحن نقدم خدمات مصممة خصيصًا لتحقيق استراتيجية تميز واحتياجاتك",
     alternates: {

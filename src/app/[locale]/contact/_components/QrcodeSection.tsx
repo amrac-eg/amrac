@@ -2,14 +2,12 @@
 import {
   FaFacebook,
   FaInstagram,
-  FaTiktok,
-  FaSnapchatGhost,
   FaMapMarkerAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { QRCodeCanvas } from "qrcode.react";
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import Link from "@/components/link";
 
 const QrcodeSection = () => {
@@ -35,7 +33,7 @@ const QrcodeSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="bg-gray-100 p-4 rounded-xl">
             <QRCodeCanvas
-              value="https://wa.me/966502207777"
+              value="https://wa.me/201222717458"
               size={160}
               bgColor="#ffffff"
               fgColor="#000000"
@@ -45,15 +43,14 @@ const QrcodeSection = () => {
           </div>
           <div>
             <h4 className="text-xl font-semibold mb-3">
-              تواصل معنا عبر رمز الاستجابة السريعة
+              تواصل معنا عبر واتساب
             </h4>
             <p className="text-gray-600 mb-4">
-              استخدم كاميرا هاتفك لمسح الرمز أعلاه للتواصل معنا مباشرة عبر
-              واتساب.
+              امسح الكود للتواصل معنا مباشرة عبر واتساب بكل سهولة.
             </p>
             <div className="flex items-center gap-2 text-gray-700">
               <FaMapMarkerAlt className="text-primary" />
-              <span>المملكة العربية السعودية</span>
+              <span>شارع الجمهورية، ادكو</span>
             </div>
           </div>
         </div>
@@ -65,15 +62,13 @@ const QrcodeSection = () => {
           تابعنا على وسائل التواصل
         </h3>
         <p className="text-gray-600 mb-6">
-          انضم إلى مجتمعنا على منصات التواصل الاجتماعي لتحصل على آخر التحديثات
-          والعروض.
+          تابعنا لمعرفة أحدث المشاريع والتحديثات الخاصة بشركة أمراك.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <Link
-            href="https://www.facebook.com/ArtX.SA"
+            href="https://www.facebook.com/amrac_eg"
             target="_blank"
-            rel="noopener noreferrer"
             className="bg-blue-100 hover:bg-blue-200 text-blue-800 p-4 rounded-xl flex flex-col items-center justify-center transition"
           >
             <FaFacebook className="text-2xl mb-2" />
@@ -81,9 +76,8 @@ const QrcodeSection = () => {
           </Link>
 
           <Link
-            href="https://x.com/ArtX_SA"
+            href="https://x.com/amrac_eg"
             target="_blank"
-            rel="noopener noreferrer"
             className="bg-black hover:bg-gray-800 text-white p-4 rounded-xl flex flex-col items-center justify-center transition"
           >
             <XIcon />
@@ -91,9 +85,8 @@ const QrcodeSection = () => {
           </Link>
 
           <Link
-            href="https://www.instagram.com/ArtX_S.A"
+            href="https://www.instagram.com/amrac_eg"
             target="_blank"
-            rel="noopener noreferrer"
             className="bg-gradient-to-r from-purple-500 to-pink-500 hover:to-pink-600 text-white p-4 rounded-xl flex flex-col items-center justify-center transition"
           >
             <FaInstagram className="text-2xl mb-2" />
@@ -101,23 +94,12 @@ const QrcodeSection = () => {
           </Link>
 
           <Link
-            href="https://www.tiktok.com/@sa_artx"
+            href="https://wa.me/201222717458"
             target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 hover:bg-gray-700 text-white p-4 rounded-xl flex flex-col items-center justify-center transition"
+            className="bg-green-100 hover:bg-green-200 text-green-700 p-4 rounded-xl flex flex-col items-center justify-center transition"
           >
-            <FaTiktok className="text-2xl mb-2" />
-            <span>تيك توك</span>
-          </Link>
-
-          <Link
-            href="https://www.snapchat.com/add/artx_sa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 p-4 rounded-xl flex flex-col items-center justify-center transition"
-          >
-            <FaSnapchatGhost className="text-2xl mb-2" />
-            <span>سناب شات</span>
+            <FaWhatsapp className="text-2xl mb-2" />
+            <span>واتساب</span>
           </Link>
         </div>
       </div>
@@ -140,7 +122,7 @@ const XIcon = () => (
 
 export async function generateMetadata() {
   return {
-    title: "ArtX - تواصل معنا",
+    title: "أمراك - تواصل معنا",
     description: "تواصل معنا اليوم وسنكون سعداء بمساعدتك في تنفيذ مشروعك",
     alternates: {
       canonical: "https://amrac.netlify.app/contact",

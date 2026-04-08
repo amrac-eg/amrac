@@ -5,6 +5,8 @@ import Header from "@/components/header";
 import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { Languages } from "@/components/constants/enums";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 const cairo = Cairo({
   subsets: ["arabic"],
@@ -19,12 +21,12 @@ export const metadata: Metadata = {
   keywords: [
     "شركة أمراك للاستشارات الهندسية",
     "شركة أمراك للاستشارات الهندسية بالرياض",
-    "شركة أمراك للاستشارات الهندسية بالمملكة العربية السعودية",
-    "شركة أمراك للاستشارات الهندسية بالمملكة العربية السعودية للاستشارات الهندسية",
+    "شركة أمراك للاستشارات الهندسية بشارع الجمهورية، ادكو",
+    "شركة أمراك للاستشارات الهندسية بشارع الجمهورية، ادكو للاستشارات الهندسية",
     "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية",
-    "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بالمملكة العربية السعودية",
+    "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بشارع الجمهورية، ادكو",
     "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بالرياض",
-    "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بالمملكة العربية السعودية للاستشارات الهندسية",
+    "شركة أمراك للاستشارات الهندسية للاستشارات الهندسية بشارع الجمهورية، ادكو للاستشارات الهندسية",
   ],
   icons: {
     icon: "https://amrac.netlify.app/favicon.png",
@@ -78,17 +80,19 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "شركة أمراك للاستشارات الهندسية",
     description: "شركة أمراك للاستشارات الهندسية",
-    siteId: "@artx_sa",
+    siteId: "@AMRAC_sa",
     images: "https://amrac.netlify.app/favicon.png",
   },
   applicationName: "شركة أمراك للاستشارات الهندسية",
 };
 
-export default function RootLayout({
+export default async function  RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    const locale = await getCurrentLocale();
+  const isArabic = locale === Languages.ARABIC;
   return (
     <html lang="ar" dir="rtl">
       <body className={`${cairo.className} {font-sans}  antialiased`}>

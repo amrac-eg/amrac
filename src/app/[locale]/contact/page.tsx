@@ -1,5 +1,5 @@
 import { FaPhone, FaWhatsapp, FaEnvelope } from "react-icons/fa";
-import MapSection from "../_components/MapSection";
+import MapSection from "../../_components/MapSection";
 import Form from "./_components/Form";
 import QrcodeSection from "./_components/QrcodeSection";
 
@@ -66,8 +66,8 @@ const ContactPage = () => {
                       من الأحد إلى الخميس، 9 صباحاً - 5 مساءً
                     </p> */}
                     <div className="space-y-1">
-                      <p className="text-gray-800">0502207777</p>
-                      <p className="text-gray-800">0133302922</p>
+                      <p className="text-gray-800">01222717458</p>
+                      <p className="text-gray-800">0452843333</p>
                     </div>
                   </div>
                 </div>
@@ -92,10 +92,10 @@ const ContactPage = () => {
                     </p>
                     <a
                       aria-label="Email"
-                      href="mailto:info@artx.sa"
+                      href="mailto:amrac@mail.com"
                       className="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition"
                     >
-                      info@artx.sa
+                      amrac@mail.com
                     </a>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default ContactPage;
 
 export async function generateMetadata() {
   return {
-    title: "ArtX - تواصل معنا",
+    title: "AMRAC - تواصل معنا",
     description: "تواصل معنا اليوم وسنكون سعداء بمساعدتك في تنفيذ مشروعك",
     alternates: {
       canonical: "https://amrac.netlify.app/contact",

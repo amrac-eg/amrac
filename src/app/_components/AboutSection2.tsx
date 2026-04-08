@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Globe, HardHat } from "lucide-react";
+import { Globe, HardHat, Award } from "lucide-react";
 import image from "../../../public/مننحن.jpg";
 
 export default function AboutSection2() {
@@ -27,7 +27,7 @@ export default function AboutSection2() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
                 <span className="block mb-2">أمراك للاستشارات الهندسية</span>
                 <span className="text-lg md:text-xl font-normal text-gray-600">
-                  نصمم حلولكم بثقة وخبرة راسخة.
+                  نصمم مشاريعكم بثقة وخبرة راسخة.
                 </span>
               </h2>
             </div>
@@ -35,23 +35,42 @@ export default function AboutSection2() {
             {/* الوصف */}
             <div className="space-y-6 text-gray-600 leading-relaxed">
               <p>
-                نقدم خدمات استشارية هندسية دقيقة ترتكز على فهم احتياجات عملائنا
-                وتوظيف أحدث المعايير العالمية. نؤمن أن التخطيط السليم هو أساس
-                النجاح، لذا نركز على التفاصيل ونقدم حلولًا متكاملة تضمن التنفيذ
-                بكفاءة وجودة عالية. رؤيتنا أن نكون شركاء في بناء بيئات أكثر
-                ذكاءً وحياة أفضل لمجتمعاتنا.
+                شركة متخصصة في تقديم الحلول والاستشارات الهندسية بخبرة تمتد
+                لأكثر من عقد ونصف في السوق المحلي والإقليمي، نقدم خدمات استشارية
+                هندسية دقيقة ترتكز على فهم احتياجات عملائنا وتوظيف أحدث المعايير
+                العالمية، نؤمن أن التخطيط السليم هو أساس النجاح، لذا نركز على
+                التفاصيل ونقدم حلولًا متكاملة تضمن التنفيذ بكفاءة وجودة عالية،
+                رؤيتنا أن نكون شركاء في بناء بيئات أكثر ذكاءً وحياة أفضل
+                لمجتمعاتنا.
               </p>
-              {/* الرؤية */}
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-primary" />
-                  رؤيتنا
-                </h3>
-                <p>
-                  أن نكون الخيار الموثوق في الاستشارات الهندسية بالمملكة، من
-                  خلال تقديم حلول ذكية ومستدامة تعزز جودة المشاريع من البداية
-                  وحتى التنفيذ.
-                </p>
+
+              {/* رؤية + رسالة */}
+              {/* <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-4">
+         
+
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
+                    <Award className="w-5 h-5 text-primary" />
+                    رسالتنا
+                  </h3>
+                  <p>
+                    تسعى أمراك لتكون إحدى العلامات البارزة في صناعة التصميم
+                    المعماري والهندسي في مصر والمنطقة، من خلال التزامها بالجودة،
+                    وحفاظها على الطابع المحلي الأصيل، وتطلّعها المستمر نحو
+                    التميّز والريادة.
+                  </p>
+                </div>
+              </div> */}
+
+              {/* الخبرة */}
+              <div className="flex items-center gap-6 bg-white p-6 rounded-xl shadow-sm border">
+                <div className="text-primary text-4xl font-bold">+15</div>
+                <div>
+                  <p className="font-semibold text-gray-900">عامًا من الخبرة</p>
+                  <p className="text-gray-500 text-sm">
+                    في التصميم والاستشارات الهندسية
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -60,8 +79,8 @@ export default function AboutSection2() {
           <div className="relative h-full">
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl border-8 border-white">
               <Image
-                src={image} // هنا غير المسار للصورة اللي عندك
-                alt="فريق عمل Artex"
+                src={image}
+                alt="فريق عمل أمراك"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
                 quality={90}
@@ -71,7 +90,7 @@ export default function AboutSection2() {
             {/* البادج */}
             <div className="absolute -bottom-8 -right-8 bg-primary text-white p-6 rounded-2xl shadow-lg">
               <div className="text-center text-lg font-medium">
-                ريادة في تقديم الحلول
+                أكثر من 15 عامًا من الخبرة
               </div>
             </div>
           </div>

@@ -7,6 +7,7 @@ import { Session } from "next-auth";
 import { Routes } from "../constants/enums";
 import Link from "../link";
 import { useClientSession } from "../hooks/useClientSession";
+import LanguageSwitcher from "./language-switcher";
 
 const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
   const pathname = usePathname();
@@ -100,6 +101,7 @@ const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
             </Link>
           </li>
         )}
+        <LanguageSwitcher />
       </ul>
     </nav>
   );

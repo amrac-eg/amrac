@@ -1,5 +1,5 @@
 "use client";
-import { deleteContact } from "@/app/contact/_action/contactaction";
+import { deleteContact } from "@/app/[locale]/contact/_action/contactaction";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
@@ -44,7 +44,6 @@ const DeleteContact = ({ id }: { id: string }) => {
       <Trash2 />
     </Button>
   );
-  
 };
 
 export default DeleteContact;
