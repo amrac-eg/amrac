@@ -11,10 +11,62 @@ import Image from "next/image";
 import image1 from "../../../public/about/metallic-sculpture-city.jpg.jpeg";
 import image2 from "../../../public/about/modern-buildings-boats-san-diego-usa.jpg.jpeg";
 import image3 from "../../../public/about/structures-architecture-from-new-york-city.jpg.jpeg";
+import { Locale } from "@/i18n.config";
 
+// Translation object
+const translations = {
+  ar: {
+    title: "عن أمراك",
+    subtitle: "رؤية – رسالة – تميّز",
+    description: "شركة <strong>أمراك</strong> متخصصة في تقديم الحلول والاستشارات الهندسية بخبرة تمتد لأكثر من عقد ونصف في السوق المحلي والإقليمي، حيث نقدم خدمات دقيقة ترتكز على فهم احتياجات العملاء وتطبيق أحدث المعايير العالمية لتحقيق أعلى مستويات الجودة.",
+    vision: {
+      title: "رؤيتنا",
+      description: "أن نكون الخيار الموثوق في الاستشارات الهندسية بمصر والمنطقة، من خلال تقديم حلول ذكية ومستدامة تعزز جودة المشاريع من البداية وحتى التنفيذ."
+    },
+    mission: {
+      title: "رسالتنا",
+      description: "تسعى أمراك لتكون إحدى العلامات البارزة في صناعة التصميم المعماري والهندسي في مصر والمنطقة، من خلال التزامها بالجودة، والحفاظ على الطابع المحلي الأصيل، والتطلع الدائم نحو التميز والريادة."
+    },
+    stats: [
+      { label: "عامًا من الخبرة" },
+      { label: "مشروع ناجح" },
+      { label: "عميل راضٍ" }
+    ],
+    imageAlt1: "تصميم معماري",
+    imageAlt2: "مخططات",
+    imageAlt3: "فريق العمل",
+    experienceCard: "+15 عام من الخبرة",
+    experienceDesc: "في التصميم والاستشارات الهندسية"
+  },
+  en: {
+    title: "About Amrak",
+    subtitle: "Vision – Mission – Excellence",
+    description: "<strong>Amrak</strong> is a specialized company providing engineering solutions and consultations with over a decade and a half of experience in local and regional markets. We offer precise services based on understanding client needs and applying the latest international standards to achieve the highest levels of quality.",
+    vision: {
+      title: "Our Vision",
+      description: "To be the trusted choice in engineering consultancy in Egypt and the region, by providing smart and sustainable solutions that enhance project quality from start to execution."
+    },
+    mission: {
+      title: "Our Mission",
+      description: "Amrak strives to be one of the leading brands in architectural and engineering design in Egypt and the region, through its commitment to quality, preservation of authentic local character, and continuous pursuit of excellence and leadership."
+    },
+    stats: [
+      { label: "Years of Experience" },
+      { label: "Successful Projects" },
+      { label: "Happy Clients" }
+    ],
+    imageAlt1: "Architectural design",
+    imageAlt2: "Plans and blueprints",
+    imageAlt3: "Team work",
+    experienceCard: "+15 Years of Experience",
+    experienceDesc: "in Design & Engineering Consulting"
+  }
+};
 
+const AboutSection = ({ locale }: { locale: Locale }) => {
+  const t = translations[locale];
+  const isRTL = locale === 'ar';
 
-const AboutSection = () => {
   useEffect(() => {
     AOS.init({
       duration: 500,
@@ -28,8 +80,9 @@ const AboutSection = () => {
     <section
       id="about"
       className="relative bg-white py-24 px-4 text-gray-800 overflow-hidden"
+      dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* خلفية */}
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent opacity-30"></div>
         <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-amber-50 to-transparent opacity-30"></div>
@@ -54,166 +107,122 @@ const AboutSection = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col items-center">
-          {/* العنوان */}
+          {/* Title */}
           <div className="text-center space-y-4 mb-16" data-aos="fade-down">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 relative inline-block">
               <span className="relative z-10 px-4 py-4">
-                عن أمراك
+                {t.title}
                 <span className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-amber-400 rounded-full"></span>
               </span>
             </h2>
             <p className="text-xl text-primary/80 font-medium mt-10">
-              رؤية – رسالة – تميّز
+              {t.subtitle}
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-5 items-start w-full">
-            {/* النصوص */}
+            {/* Text content */}
             <div className="space-y-8">
-              {/* تعريف */}
+              {/* Description */}
               <div
                 data-aos="fade-right"
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
               >
                 <p className="text-lg leading-relaxed text-gray-700">
-                  شركة <strong className="text-primary">أمراك</strong> متخصصة في
-                  تقديم الحلول والاستشارات الهندسية بخبرة تمتد لأكثر من عقد ونصف
-                  في السوق المحلي والإقليمي، حيث نقدم خدمات دقيقة ترتكز على فهم
-                  احتياجات العملاء وتطبيق أحدث المعايير العالمية لتحقيق أعلى
-                  مستويات الجودة.
+                  {t.description.replace(
+                    "<strong>أمراك</strong>",
+                    `<strong className="text-primary">${locale === 'ar' ? 'أمراك' : 'Amrak'}</strong>`
+                  )}
                 </p>
               </div>
 
-              {/* رؤية */}
+              {/* Vision */}
               <div
                 data-aos="fade-right"
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 group"
               >
-                <div className="flex items-start mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg ml-4">
+                <div className={`flex items-start mb-4 ${isRTL ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div className={`p-2 bg-primary/10 rounded-lg ${isRTL ? 'ml-4' : 'mr-4'}`}>
                     <Globe className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">رؤيتنا</h3>
-                    <p className="text-gray-700">
-                      أن نكون الخيار الموثوق في الاستشارات الهندسية بمصر
-                      والمنطقة، من خلال تقديم حلول ذكية ومستدامة تعزز جودة
-                      المشاريع من البداية وحتى التنفيذ.
-                    </p>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
+                    <h3 className="font-bold text-lg mb-2">{t.vision.title}</h3>
+                    <p className="text-gray-700">{t.vision.description}</p>
                   </div>
                 </div>
               </div>
 
-              {/* رسالة */}
+              {/* Mission */}
               <div
                 data-aos="fade-right"
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 group"
               >
-                <div className="flex items-start mb-4">
-                  <div className="p-2 bg-amber-400/10 rounded-lg ml-4">
+                <div className={`flex items-start mb-4 ${isRTL ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div className={`p-2 bg-amber-400/10 rounded-lg ${isRTL ? 'ml-4' : 'mr-4'}`}>
                     <Award className="w-6 h-6 text-amber-400" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">رسالتنا</h3>
-                    <p className="text-gray-700">
-                      تسعى أمراك لتكون إحدى العلامات البارزة في صناعة التصميم
-                      المعماري والهندسي في مصر والمنطقة، من خلال التزامها
-                      بالجودة، والحفاظ على الطابع المحلي الأصيل، والتطلع الدائم
-                      نحو التميز والريادة.
-                    </p>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
+                    <h3 className="font-bold text-lg mb-2">{t.mission.title}</h3>
+                    <p className="text-gray-700">{t.mission.description}</p>
                   </div>
                 </div>
               </div>
 
-              {/* نقاط القوة */}
-              {/* <div
-                data-aos="fade-right"
-                className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
-              >
-                <div className="flex items-start mb-4">
-                  <div className="p-2 bg-green-400/10 rounded-lg ml-4">
-                    <TrendingUp className="w-6 h-6 text-green-400" />
-                  </div>
-                  <p className="text-lg text-gray-700">
-                    نؤمن أن لكل مشروع هوية فريدة، لذلك نعمل على تقديم حلول مبتكرة
-                    تعكس رؤية العميل وتواكب متطلبات المستقبل بأعلى درجات
-                    الاحترافية.
-                  </p>
-                </div>
-              </div> */}
-
-              {/* إحصائيات */}
+              {/* Stats */}
               <div data-aos="fade-up" className="grid grid-cols-3 gap-4">
                 {[
-                  {
-                    icon: <CheckCircle className="w-6 h-6" />,
-                    value: "+15",
-                    label: "عامًا من الخبرة",
-                    color: "text-primary",
-                  },
-                  {
-                    icon: <Award className="w-6 h-6" />,
-                    value: "+200",
-                    label: "مشروع ناجح",
-                    color: "text-blue-400",
-                  },
-                  {
-                    icon: <TrendingUp className="w-6 h-6" />,
-                    value: "+130",
-                    label: "عميل راضٍ",
-                    color: "text-green-400",
-                  },
+                  { icon: <CheckCircle className="w-6 h-6" />, value: "+15", color: "text-primary" },
+                  { icon: <Award className="w-6 h-6" />, value: "+200", color: "text-blue-400" },
+                  { icon: <TrendingUp className="w-6 h-6" />, value: "+130", color: "text-green-400" },
                 ].map((item, i) => (
                   <div
                     key={i}
                     className="bg-white p-4 rounded-xl shadow-md text-center"
                   >
-                    <div className={`${item.color} mb-2`}>{item.icon}</div>
+                    <div className={`${item.color} mb-2 flex justify-center`}>{item.icon}</div>
                     <div className="text-2xl font-bold">{item.value}</div>
-                    <div className="text-sm text-gray-600">{item.label}</div>
+                    <div className="text-sm text-gray-600">{t.stats[i].label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* الصور */}
+            {/* Images */}
             <div className="relative h-full min-h-[600px]">
               <div className="relative w-full h-80 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   width={400}
                   height={400}
                   src={image1}
-                  alt="تصميم معماري"
+                  alt={t.imageAlt1}
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="absolute right-0 top-60 w-2/3 h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+              <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-60 w-2/3 h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}>
                 <Image
                   width={400}
                   height={400}
                   src={image2}
-                  alt="مخططات"
+                  alt={t.imageAlt2}
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="absolute left-0 bottom-0 w-2/3 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+              <div className={`absolute ${isRTL ? 'right-0' : 'left-0'} bottom-0 w-2/3 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}>
                 <Image
                   width={400}
                   height={400}
                   src={image3}
-                  alt="فريق العمل"
+                  alt={t.imageAlt3}
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* كارت الخبرة */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-2xl w-72">
-                <h3 className="font-bold text-lg mb-1">+15 عام من الخبرة</h3>
-                <p className="text-sm text-gray-600">
-                  في التصميم والاستشارات الهندسية
-                </p>
+              {/* Experience Card */}
+              <div className={`absolute -bottom-6 ${isRTL ? '-right-6' : '-left-6'} bg-white p-6 rounded-xl shadow-2xl w-72`}>
+                <h3 className="font-bold text-lg mb-1">{t.experienceCard}</h3>
+                <p className="text-sm text-gray-600">{t.experienceDesc}</p>
               </div>
             </div>
           </div>

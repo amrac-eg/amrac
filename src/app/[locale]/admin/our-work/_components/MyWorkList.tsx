@@ -22,7 +22,10 @@ const MyWorkItem = ({ ourwork }: { ourwork: Ourwork & { images?: ImagemyWork[] }
         <div className="flex justify-between items-start">
           <div>
             <CardTitle className="text-xl text-right">
-              {ourwork.title}
+              {ourwork.title_ar}
+            </CardTitle>
+            <CardTitle className="text-xl text-right">
+              {ourwork.title_en}
             </CardTitle>
             <CardDescription>
               {new Date(ourwork.date).toLocaleDateString()}
@@ -62,7 +65,7 @@ const MyWorkItem = ({ ourwork }: { ourwork: Ourwork & { images?: ImagemyWork[] }
                   <div className="aspect-square rounded-lg overflow-hidden border">
                     <Image
                       src={image.image}
-                      alt={`${ourwork.title || "Work"} - additional image`}
+                      alt={`${ourwork.title_ar || "Work"} - additional image`}
                       fill
                       className="object-cover"
                     />

@@ -1,3 +1,23 @@
 {
-    
+  "HeroSection": {
+    "title": "AMRAC for Engineering Consultations",
+    "titleHighlight": "AMRAC",
+    "subtitle": "Over a decade and a half of experience in architectural design and supervision locally and regionally.",
+    "description": "AMRAC Engineering Consultations is one of the companies with deep-rooted experience in the engineering market, contributing to the design and supervision of prominent architectural projects in Egypt and abroad, adhering to the highest standards of quality and innovation.",
+    "cards": {
+      "design": {
+        "title": "Design",
+        "desc": "Innovative solutions that fit the client's vision"
+      },
+      "precision": {
+        "title": "Engineering Precision",
+        "desc": "Accurate execution details according to the highest standards"
+      },
+      "projects": {
+        "title": "Successful Projects",
+        "desc": "+200 local and regional projects"
+      }
+    },
+    "cta": "Consult Our Experts Now"
+  }
 }

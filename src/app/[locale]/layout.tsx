@@ -86,20 +86,20 @@ export const metadata: Metadata = {
   applicationName: "شركة أمراك للاستشارات الهندسية",
 };
 
-export default async function  RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const locale = await getCurrentLocale();
+  const locale = await getCurrentLocale();
   const isArabic = locale === Languages.ARABIC;
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir={`${isArabic ? "rtl" : "ltr"}`}>
       <body className={`${cairo.className} {font-sans}  antialiased`}>
         <NextAuthSessionProvider>
           <Header />
           {children}
-          <Footer />
+          <Footer  locale={locale} />
           <Toaster position="top-center" richColors />
         </NextAuthSessionProvider>
       </body>

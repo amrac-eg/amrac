@@ -21,27 +21,44 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
   const servicesFields = (): IFormField[] => [
     {
       label: "العنوان",
-      name: "title",
+      name: "title_ar",
       type: "text",
       placeholder: "العنوان",
       autoFocus: true,
     },
+    {
+      label: "title",
+      name: "title_en",
+      type: "text",
+      placeholder: "title",
+    },
 
     {
       label: "الوصف",
-      name: "description",
+      name: "description_ar",
       type: "textarea",
       placeholder: "الوصف",
-      autoFocus: true,
+    },
+    {
+      label: "description",
+      name: "description_en",
+      type: "textarea",
+      placeholder: "description",
     },
   ];
 
   const ourWorkFields = (): IFormField[] => [
     {
       label: "اسم المشروع",
-      name: "title",
+      name: "title_ar",
       type: "text",
       placeholder: "اسم المشروع",
+    },
+    {
+      label: "title",
+      name: "title_en",
+      type: "text",
+      placeholder: "title",
     },
 
     {

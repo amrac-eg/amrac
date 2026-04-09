@@ -8,50 +8,74 @@ import { Routes } from "../constants/enums";
 import Link from "../link";
 import { useClientSession } from "../hooks/useClientSession";
 import LanguageSwitcher from "./language-switcher";
+import { Locale } from "@/i18n.config";
 
-const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
+// Translation object
+const translations = {
+  ar: {
+    menuButton: "القائمة",
+    closeButton: "إغلاق",
+    links: [
+      { title: "الرئيسية", href: Routes.HOME },
+      { title: "خدماتنا", href: Routes.SERVICES },
+      { title: "مشاريعنا", href: Routes.OURWORK },
+      { title: "من نحن", href: Routes.ABOUT },
+      { title: "اتصل بنا", href: Routes.CONTACT }
+    ],
+    adminPanel: "لوحة التحكم"
+  },
+  en: {
+    menuButton: "Menu",
+    closeButton: "Close",
+    links: [
+      { title: "Home", href: Routes.HOME },
+      { title: "Services", href: Routes.SERVICES },
+      { title: "Our Work", href: Routes.OURWORK },
+      { title: "About", href: Routes.ABOUT },
+      { title: "Contact", href: Routes.CONTACT }
+    ],
+    adminPanel: "Admin Panel"
+  }
+};
+
+const Navbar = ({
+  initialSession,
+  locale,
+}: {
+  initialSession: Session | null;
+  locale: Locale;
+}) => {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
   const session = useClientSession(initialSession);
-  console.log(session);
+  const t = translations[locale];
+  const isRTL = locale === 'ar';
 
-  const links = [
-    {
-      id: crypto.randomUUID(),
-      title: "الرئيسية",
-      href: Routes.HOME,
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "خدماتنا",
-      href: Routes.SERVICES,
-    },
+  // Filter out the locale from pathname for comparison
+  const getPathWithoutLocale = (path: string) => {
+    const segments = path.split('/');
+    // Remove the first empty string and the locale segment
+    if (segments.length > 2 && (segments[1] === 'ar' || segments[1] === 'en')) {
+      return '/' + segments.slice(2).join('/');
+    }
+    return path;
+  };
 
-    {
-      id: crypto.randomUUID(),
-      title: "مشاريعنا",
-      href: Routes.OURWORK,
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "من نحن",
-      href: Routes.ABOUT,
-    },
+  const currentPath = getPathWithoutLocale(pathname);
 
-    {
-      id: crypto.randomUUID(),
-      title: "اتصل بنا",
-      href: Routes.CONTACT,
-    },
-  ];
+  const links = t.links.map(link => ({
+    id: crypto.randomUUID(),
+    title: link.title,
+    href: link.href
+  }));
 
   return (
-    <nav>
+    <nav dir={isRTL ? "rtl" : "ltr"}>
       <Button
         data-slot="menu-button"
         role="button"
-        aria-label="Menu"
-        title="Menu"
+        aria-label={t.menuButton}
+        title={t.menuButton}
         variant="secondary"
         size="sm"
         className="lg:hidden"
@@ -70,6 +94,8 @@ const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
           size="sm"
           className="absolute top-4 right-4 lg:hidden"
           onClick={() => setOpenMenu(false)}
+          aria-label={t.closeButton}
+          title={t.closeButton}
         >
           <XIcon className="!w-6 !h-6" />
         </Button>
@@ -78,11 +104,14 @@ const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
         {links.map((link) => (
           <li key={link.id}>
             <Link
-              onClick={() => setOpenMenu(false)} // Close menu after clicking
+              onClick={() => setOpenMenu(false)}
               className={`font-semibold hover:text-blue-400 duration-200 transition-colors ${
-                pathname === `/${link.href}` ? "text-blue-400" : "text-white"
+                currentPath === `/${link.href}` || 
+                (link.href === Routes.HOME && (currentPath === '/' || currentPath === ''))
+                  ? "text-blue-400" 
+                  : "text-white"
               }`}
-              href={`/${link.href}`}
+              href={`/${locale}/${link.href}`}
             >
               {link.title}
             </Link>
@@ -91,13 +120,13 @@ const Navbar = ({ initialSession }: { initialSession: Session | null }) => {
         {session.data?.user && (
           <li>
             <Link
-              href={`/${Routes.ADMIN}`}
+              href={`/${locale}/${Routes.ADMIN}`}
               onClick={() => setOpenMenu(false)}
-              className={`font-semibold hover:text-primary duration-200 transition-colors ${
-                pathname === `/${Routes.ADMIN}` ? "text-blue-400" : "text-white"
+              className={`font-semibold hover:text-blue-400 duration-200 transition-colors ${
+                currentPath === `/${Routes.ADMIN}` ? "text-blue-400" : "text-white"
               }`}
             >
-              لوحة التحكم
+              {t.adminPanel}
             </Link>
           </li>
         )}

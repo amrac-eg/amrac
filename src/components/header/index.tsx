@@ -4,9 +4,11 @@ import logo from "../../../public/favicon.png";
 import Navbar from "./Navbar";
 import { getServerSession } from "next-auth";
 import authOptions from "@/server/auth";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 const Header = async () => {
   const initialSession = await getServerSession(authOptions);
+  const locale = await getCurrentLocale();
 
   return (
     <>
@@ -18,12 +20,16 @@ const Header = async () => {
                 style={{ height: "auto" }} // 👈 Prevent distortion
                 priority
                 src={logo}
-                alt="شركة الاستشارات الهندسية"
+                alt={
+                  locale === "ar"
+                    ? "شركه امراك للاستشارات الهندسيه"
+                    : "Amrac Consulting"
+                }
                 width={100}
                 height={100}
               />
             </Link>
-            <Navbar initialSession={initialSession} />
+            <Navbar locale={locale} initialSession={initialSession} />
           </div>
         </div>
       </header>

@@ -12,28 +12,30 @@ const uploadToCloudinaryDirect = async (file: File): Promise<string> => {
     // تحويل الملف إلى Buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // رفع مباشرة إلى Cloudinary
     const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream(
-        {
-          folder: 'services',
-          resource_type: 'auto',
-          transformation: [
-            { width: 1200, height: 800, crop: 'limit' },
-            { quality: 'auto' },
-            { fetch_format: 'auto' }
-          ]
-        },
-        (error, result) => {
-          if (error) {
-            console.error("Cloudinary upload error:", error);
-            reject(error);
-          } else {
-            resolve(result);
-          }
-        }
-      ).end(buffer);
+      cloudinary.uploader
+        .upload_stream(
+          {
+            folder: "services",
+            resource_type: "auto",
+            transformation: [
+              { width: 1200, height: 800, crop: "limit" },
+              { quality: "auto" },
+              { fetch_format: "auto" },
+            ],
+          },
+          (error, result) => {
+            if (error) {
+              console.error("Cloudinary upload error:", error);
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          },
+        )
+        .end(buffer);
     });
 
     return (result as any).secure_url;
@@ -69,7 +71,7 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
 
   const data = result.data;
   const imageFile = data?.image as File;
-  
+
   let imageUrl = "";
   let publicId = "";
 
@@ -79,11 +81,11 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
       console.log("Uploading image to Cloudinary...");
       imageUrl = await uploadToCloudinaryDirect(imageFile);
       console.log("Upload successful, URL:", imageUrl);
-      
+
       // استخراج publicId من URL
-      const urlParts = imageUrl.split('/');
+      const urlParts = imageUrl.split("/");
       const filename = urlParts[urlParts.length - 1];
-      publicId = `services/${filename.split('.')[0]}`;
+      publicId = `services/${filename.split(".")[0]}`;
     } catch (error) {
       console.error("Error uploading image:", error);
       return {
@@ -97,8 +99,10 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
   try {
     await db.services.create({
       data: {
-        title: data.title,
-        description: data.description,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
+        description_ar: data.description_ar,
+        description_en: data.description_en,
         image: imageUrl,
         publicId: publicId,
       },
@@ -107,7 +111,7 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
     revalidatePath(`/${Routes.ADMIN}`);
     revalidatePath(`${Routes.SERVICES}`);
     revalidatePath(`/`);
-    
+
     return {
       status: 200,
       message: "تم اضافة الخدمة بنجاح",
@@ -153,7 +157,7 @@ export const UpdateServices = async (
   if (hasNewImage) {
     try {
       console.log("Updating image...");
-      
+
       // حذف الصورة القديمة
       if (publicId && publicId !== "") {
         await deleteFromCloudinary(publicId);
@@ -161,10 +165,10 @@ export const UpdateServices = async (
 
       // رفع الصورة الجديدة
       imageUrl = await uploadToCloudinaryDirect(imageFile);
-      const urlParts = imageUrl.split('/');
+      const urlParts = imageUrl.split("/");
       const filename = urlParts[urlParts.length - 1];
-      newPublicId = `services/${filename.split('.')[0]}`;
-      
+      newPublicId = `services/${filename.split(".")[0]}`;
+
       console.log("Image updated successfully");
     } catch (error) {
       console.error("Error updating image:", error);
@@ -179,7 +183,7 @@ export const UpdateServices = async (
     const service = await db.services.findUnique({
       where: { id: id },
     });
-    
+
     if (!service) {
       return {
         status: 404,
@@ -191,8 +195,10 @@ export const UpdateServices = async (
     await db.services.update({
       where: { id: id },
       data: {
-        title: data.title,
-        description: data.description,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
+        description_ar: data.description_ar,
+        description_en: data.description_en,
         image: imageUrl ?? service.image,
         publicId: newPublicId ?? service.publicId,
       },
@@ -235,7 +241,7 @@ export const deleteServices = async ({
     revalidatePath(`/${Routes.ADMIN}`);
     revalidatePath(`/${Routes.SERVICES}`);
     revalidatePath(`/ar`);
-    
+
     return {
       status: 200,
       message: "تم حذف الخدمة بنجاح",

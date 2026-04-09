@@ -2,7 +2,8 @@ import * as z from "zod";
 
 export const ourWorkSchema = () => {
   return z.object({
-    title: z.string().min(1, { message: "Arabic title is required" }),
+    title_ar: z.string().min(1, { message: "Arabic title is required" }),
+    title_en: z.string().min(1, { message: "English title is required" }),
     image: z.custom((val) => val instanceof File).optional(),
     publicId: z.string().optional(),
     date: z

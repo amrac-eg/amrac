@@ -18,12 +18,12 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSection locale={locale}  />
-      <AboutSection2 />
-      <AboutSection />
-      <HomeServicesSection services={services} />
-      <WhySection />
-      <ProjectsSection ourworks={ourWork} />
+      <HeroSection  locale={locale}  />
+      <AboutSection2  locale={locale} />
+      <AboutSection locale={locale} />
+      <HomeServicesSection locale={locale} services={services} />
+      <WhySection locale={locale} />
+      <ProjectsSection locale={locale} ourworks={ourWork} />
       <MapSection />
     </>
   );

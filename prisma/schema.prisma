@@ -10,8 +10,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -63,18 +64,21 @@ model Session {
 }
 
 model Services {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  image       String?
-  publicId    String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(cuid())
+  title_ar       String
+  title_en       String
+  description_en String
+  description_ar String
+  image          String?
+  publicId       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Ourwork {
-  id    String @id @default(cuid())
-  title String
+  id        String        @id @default(cuid())
+  title_ar  String
+  title_en  String
   date      DateTime      @default(now())
   image     String
   publicId  String?

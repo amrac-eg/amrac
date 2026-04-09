@@ -4,7 +4,7 @@ import { Pages, Routes } from "@/components/constants/enums";
 import { revalidatePath } from "next/cache";
 import { serviceSchema } from "@/validation/services/serviceSchema";
 import { db } from "@/server/db/prisma";
-import { v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 import { imageToOurWorkSchema, ourWorkSchema } from "@/validation/Ourwork";
 
 // تكوين Cloudinary
@@ -15,45 +15,52 @@ cloudinary.config({
 });
 
 // دالة مساعدة لرفع الصورة إلى Cloudinary
-const uploadToCloudinary = async (file: File, folder: string = "services"): Promise<{ url: string; publicId: string }> => {
+const uploadToCloudinary = async (
+  file: File,
+  folder: string = "services",
+): Promise<{ url: string; publicId: string }> => {
   try {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // تحقق من التكوين قبل الرفع
     if (!process.env.CLOUDINARY_CLOUD_NAME) {
       throw new Error("CLOUDINARY_CLOUD_NAME is not configured");
     }
-    
+
     const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream(
-        {
-          folder: folder,
-          resource_type: 'auto',
-          transformation: [
-            { width: 1200, height: 800, crop: 'limit' },
-            { quality: 'auto' },
-            { fetch_format: 'auto' }
-          ]
-        },
-        (error, result) => {
-          if (error) {
-            console.error("Cloudinary upload error details:", error);
-            reject(error);
-          } else {
-            resolve(result);
-          }
-        }
-      ).end(buffer);
+      cloudinary.uploader
+        .upload_stream(
+          {
+            folder: folder,
+            resource_type: "auto",
+            transformation: [
+              { width: 1200, height: 800, crop: "limit" },
+              { quality: "auto" },
+              { fetch_format: "auto" },
+            ],
+          },
+          (error, result) => {
+            if (error) {
+              console.error("Cloudinary upload error details:", error);
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          },
+        )
+        .end(buffer);
     });
 
-    return { 
-      url: (result as any).secure_url, 
-      publicId: (result as any).public_id 
+    return {
+      url: (result as any).secure_url,
+      publicId: (result as any).public_id,
     };
   } catch (error) {
     console.error("Error in uploadToCloudinary:", error);
-    throw new Error(`Failed to upload to Cloudinary: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    throw new Error(
+      `Failed to upload to Cloudinary: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
   }
 };
 
@@ -83,7 +90,7 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
 
   const data = result.data;
   const imageFile = data?.image as File;
-  
+
   let imageUrl = "";
   let publicId = "";
 
@@ -108,8 +115,10 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
   try {
     await db.services.create({
       data: {
-        title: data.title,
-        description: data.description,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
+        description_ar: data.description_ar,
+        description_en: data.description_en,
         image: imageUrl,
         publicId: publicId,
       },
@@ -118,7 +127,7 @@ export const addservice = async (prevState: unknown, formData: FormData) => {
     revalidatePath(`/${Routes.ADMIN}`);
     revalidatePath(`${Routes.SERVICES}`);
     revalidatePath(`/`);
-    
+
     return {
       status: 200,
       message: "تم اضافة الخدمة بنجاح",
@@ -164,7 +173,7 @@ export const UpdateServices = async (
   if (hasNewImage) {
     try {
       console.log("Updating image...");
-      
+
       // حذف الصورة القديمة من Cloudinary إذا كانت موجودة
       if (publicId && publicId !== "") {
         await deleteFromCloudinary(publicId);
@@ -174,7 +183,7 @@ export const UpdateServices = async (
       const uploadResult = await uploadToCloudinary(imageFile, "services/main");
       imageUrl = uploadResult.url;
       newPublicId = uploadResult.publicId;
-      
+
       console.log("Image updated successfully");
     } catch (error) {
       console.error("Error updating image:", error);
@@ -189,7 +198,7 @@ export const UpdateServices = async (
     const service = await db.services.findUnique({
       where: { id: id },
     });
-    
+
     if (!service) {
       return {
         status: 404,
@@ -201,8 +210,10 @@ export const UpdateServices = async (
     await db.services.update({
       where: { id: id },
       data: {
-        title: data.title,
-        description: data.description,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
+        description_ar: data.description_ar,
+        description_en: data.description_en,
         image: imageUrl ?? service.image,
         publicId: newPublicId ?? service.publicId,
       },
@@ -245,7 +256,7 @@ export const deleteServices = async ({
     revalidatePath(`/${Routes.ADMIN}`);
     revalidatePath(`/${Routes.SERVICES}`);
     revalidatePath(`/ar`);
-    
+
     return {
       status: 200,
       message: "تم حذف الخدمة بنجاح",
@@ -259,22 +270,16 @@ export const deleteServices = async ({
   }
 };
 
-
-
-
-
-
-
 // دالة مساعدة لحذف صور متعددة من Cloudinary
 const deleteMultipleFromCloudinary = async (publicIds: string[]) => {
   try {
-    const validPublicIds = publicIds.filter(id => id && id.trim() !== "");
+    const validPublicIds = publicIds.filter((id) => id && id.trim() !== "");
     if (validPublicIds.length === 0) return;
-    
+
     await Promise.all(
       validPublicIds.map(async (publicId) => {
         await deleteFromCloudinary(publicId);
-      })
+      }),
     );
   } catch (error) {
     console.error("Error deleting multiple images from Cloudinary:", error);
@@ -283,7 +288,7 @@ const deleteMultipleFromCloudinary = async (publicIds: string[]) => {
 
 export const addourwork = async (prevState: unknown, formData: FormData) => {
   const result = ourWorkSchema().safeParse(
-    Object.fromEntries(formData.entries())
+    Object.fromEntries(formData.entries()),
   );
 
   if (result.success === false) {
@@ -296,7 +301,7 @@ export const addourwork = async (prevState: unknown, formData: FormData) => {
 
   const data = result.data;
   const imageFile = data?.image as File;
-  
+
   let imageUrl = "";
   let publicId = "";
 
@@ -317,7 +322,8 @@ export const addourwork = async (prevState: unknown, formData: FormData) => {
   try {
     await db.ourwork.create({
       data: {
-        title: data.title,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
         date: data.date,
         image: imageUrl,
         publicId: publicId,
@@ -347,10 +353,10 @@ export const addourwork = async (prevState: unknown, formData: FormData) => {
 export const addourworkImage = async (
   id_work: string,
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) => {
   const result = imageToOurWorkSchema().safeParse(
-    Object.fromEntries(formData.entries())
+    Object.fromEntries(formData.entries()),
   );
 
   if (result.success === false) {
@@ -428,10 +434,10 @@ export const updatemywork = async (
   id: string,
   publicId: string,
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) => {
   const result = ourWorkSchema().safeParse(
-    Object.fromEntries(formData.entries())
+    Object.fromEntries(formData.entries()),
   );
 
   if (result.success === false) {
@@ -445,7 +451,7 @@ export const updatemywork = async (
   const data = result.data;
   const imageFile = data?.image as File;
   const hasNewImage = Boolean(imageFile?.size);
-  
+
   let imageUrl;
   let newPublicId;
 
@@ -482,7 +488,8 @@ export const updatemywork = async (
     const updatedWork = await db.ourwork.update({
       where: { id },
       data: {
-        title: data.title,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
         date: data.date,
         image: hasNewImage ? imageUrl : mywork.image,
         publicId: hasNewImage ? newPublicId : mywork.publicId,
@@ -537,9 +544,9 @@ export const deletemywork = async ({
         message: "Work not found",
       };
     }
-    
+
     const id_work = deletedWork.id;
-    
+
     revalidatePath(`/${Routes.ADMIN}/${Pages.OURWORK}`);
     revalidatePath(`/${Pages.OURWORK}`);
     revalidatePath(`/`);
@@ -549,7 +556,7 @@ export const deletemywork = async ({
     revalidatePath(`/ar/our-work/${id_work}`);
     revalidatePath(`/en/admin/our-work/${id_work}`);
     revalidatePath(`/en/our-work/${id_work}`);
-    
+
     return {
       status: 200,
       message: "Work and all associated images deleted successfully",
@@ -588,7 +595,7 @@ export const deleteImageFromMyWork = async ({
     });
 
     const id_work = deletedWork.id;
-    
+
     revalidatePath(`/${Routes.ADMIN}/${Pages.OURWORK}`);
     revalidatePath(`/${Pages.OURWORK}`);
     revalidatePath(`/`);

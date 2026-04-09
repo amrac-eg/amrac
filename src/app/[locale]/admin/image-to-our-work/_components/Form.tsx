@@ -111,7 +111,7 @@ const SelectId = ({
               value={name.id}
               className="hover:bg-primary/10 focus:bg-primary/10"
             >
-              {name.title}
+              {name.title_ar}
             </SelectItem>
           ))}
         </SelectGroup>
