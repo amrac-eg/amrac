@@ -38,7 +38,7 @@ const translations = {
     shortDesc:
       "A decade and a half of experience in architectural design and supervision locally and regionally.",
     longDesc:
-      "Amrak Engineering Consultancy is one of the leading firms with extensive experience in the engineering market, contributing to the design and supervision of prominent architectural projects in Egypt and abroad, with commitment to the highest standards of quality and innovation.",
+      "AMRAC Engineering Consultancy is one of the leading firms with extensive experience in the engineering market, contributing to the design and supervision of prominent architectural projects in Egypt and abroad, with commitment to the highest standards of quality and innovation.",
     cards: [
       {
         title: "Design",

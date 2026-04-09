@@ -27,13 +27,15 @@ const translations = {
         icon: "🤝",
       },
     ],
-    testimonial: "في أمراك، لا نكتفي بتنفيذ المشاريع بل نضع بصمتنا في كل تصميم، مستلهمين من طموحات عملائنا لنقدّم حلولًا هندسية متكاملة ترتقي لمستوى التحدي.",
-    testimonialAuthor: "- فريق أمراك"
+    testimonial:
+      "في أمراك، لا نكتفي بتنفيذ المشاريع بل نضع بصمتنا في كل تصميم، مستلهمين من طموحات عملائنا لنقدّم حلولًا هندسية متكاملة ترتقي لمستوى التحدي.",
+    testimonialAuthor: "- فريق أمراك",
   },
   en: {
-    title: "Why Choose Amrak?",
-    titleHighlight: "Amrak",
-    subtitle: "We believe every project is a new opportunity for excellence and creativity",
+    title: "Why Choose AMRAC?",
+    titleHighlight: "AMRAC",
+    subtitle:
+      "We believe every project is a new opportunity for excellence and creativity",
     features: [
       {
         title: "Creative Vision",
@@ -51,21 +53,25 @@ const translations = {
         icon: "🤝",
       },
     ],
-    testimonial: "At Amrak, we don't just execute projects; we leave our mark on every design, inspired by our clients' ambitions to deliver integrated engineering solutions that rise to the challenge.",
-    testimonialAuthor: "- Amrak Team"
-  }
+    testimonial:
+      "At AMRAC, we don't just execute projects; we leave our mark on every design, inspired by our clients' ambitions to deliver integrated engineering solutions that rise to the challenge.",
+    testimonialAuthor: "- AMRAC Team",
+  },
 };
 
 const WhySection = ({ locale }: { locale: Locale }) => {
   const t = translations[locale];
-  const isRTL = locale === 'ar';
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden container" dir={isRTL ? "rtl" : "ltr"}>
+    <section
+      className="relative py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden container"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-50 left-10 w-40 h-40 rounded-full bg-primary"></div>
@@ -77,9 +83,12 @@ const WhySection = ({ locale }: { locale: Locale }) => {
         <div className="text-center space-y-4 mb-16" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 relative inline-block">
             <span className="relative z-10 px-4 py-4">
-              {t.title.replace(t.titleHighlight, '')}
+              {t.title.replace(t.titleHighlight, "")}
               <span className="text-primary">{t.titleHighlight}</span>
-              {t.title.includes(t.titleHighlight) && t.title.replace(t.titleHighlight, '').includes('؟') ? '' : '؟'}
+              {t.title.includes(t.titleHighlight) &&
+              t.title.replace(t.titleHighlight, "").includes("؟")
+                ? ""
+                : "؟"}
               <span className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-amber-400 rounded-full z-0 mt-4"></span>
             </span>
           </h2>
@@ -87,7 +96,7 @@ const WhySection = ({ locale }: { locale: Locale }) => {
             {t.subtitle}
           </p>
         </div>
-        
+
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.features.map((item, index) => (
@@ -112,10 +121,10 @@ const WhySection = ({ locale }: { locale: Locale }) => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <p className="text-xl italic text-gray-700 mb-4">
-            {t.testimonial}
+          <p className="text-xl italic text-gray-700 mb-4">{t.testimonial}</p>
+          <p className="font-bold text-gray-800 text-2xl">
+            {t.testimonialAuthor}
           </p>
-          <p className="font-bold text-gray-800 text-2xl">{t.testimonialAuthor}</p>
         </div>
       </div>
     </section>

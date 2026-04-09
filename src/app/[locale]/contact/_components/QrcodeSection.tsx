@@ -18,7 +18,7 @@ const translations = {
       title: "مسح سريع للتواصل",
       subtitle: "تواصل معنا عبر واتساب",
       description: "امسح الكود للتواصل معنا مباشرة عبر واتساب بكل سهولة.",
-      address: "شارع الجمهورية، ادكو"
+      address: "شارع الجمهورية، ادكو",
     },
     socialSection: {
       title: "تابعنا على وسائل التواصل",
@@ -26,38 +26,41 @@ const translations = {
       facebook: "فيسبوك",
       x: "X",
       instagram: "إنستغرام",
-      whatsapp: "واتساب"
+      whatsapp: "واتساب",
     },
     metadata: {
       title: "أمراك - تواصل معنا",
-      description: "تواصل معنا اليوم وسنكون سعداء بمساعدتك في تنفيذ مشروعك"
-    }
+      description: "تواصل معنا اليوم وسنكون سعداء بمساعدتك في تنفيذ مشروعك",
+    },
   },
   en: {
     qrSection: {
       title: "Quick Scan to Connect",
       subtitle: "Contact us via WhatsApp",
-      description: "Scan the code to contact us directly via WhatsApp with ease.",
-      address: "Al Gomhouria Street, Edku"
+      description:
+        "Scan the code to contact us directly via WhatsApp with ease.",
+      address: "Al Gomhouria Street, Edku",
     },
     socialSection: {
       title: "Follow us on Social Media",
-      description: "Follow us to see the latest projects and updates from Amrak Company.",
+      description:
+        "Follow us to see the latest projects and updates from AMRAC Company.",
       facebook: "Facebook",
       x: "X",
       instagram: "Instagram",
-      whatsapp: "WhatsApp"
+      whatsapp: "WhatsApp",
     },
     metadata: {
-      title: "Amrak - Contact Us",
-      description: "Contact us today and we'll be happy to help you with your project"
-    }
-  }
+      title: "AMRAC - Contact Us",
+      description:
+        "Contact us today and we'll be happy to help you with your project",
+    },
+  },
 };
 
 const QrcodeSection = ({ locale }: { locale: Locale }) => {
   const t = translations[locale];
-  const isRTL = locale === 'ar';
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     AOS.init({
@@ -79,7 +82,9 @@ const QrcodeSection = ({ locale }: { locale: Locale }) => {
         <h3 className="text-2xl font-bold mb-6 text-gray-800">
           {t.qrSection.title}
         </h3>
-        <div className={`flex flex-col md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
+        <div
+          className={`flex flex-col md:flex-row items-center gap-8 ${isRTL ? "md:flex-row-reverse" : ""}`}
+        >
           <div className="bg-gray-100 p-4 rounded-xl">
             <QRCodeCanvas
               value="https://wa.me/201222717458"
@@ -90,14 +95,14 @@ const QrcodeSection = ({ locale }: { locale: Locale }) => {
               includeMargin
             />
           </div>
-          <div className={isRTL ? 'text-right' : 'text-left'}>
+          <div className={isRTL ? "text-right" : "text-left"}>
             <h4 className="text-xl font-semibold mb-3">
               {t.qrSection.subtitle}
             </h4>
-            <p className="text-gray-600 mb-4">
-              {t.qrSection.description}
-            </p>
-            <div className={`flex items-center gap-2 text-gray-700 ${isRTL ? 'flex-row' : 'flex-row-reverse'}`}>
+            <p className="text-gray-600 mb-4">{t.qrSection.description}</p>
+            <div
+              className={`flex items-center gap-2 text-gray-700 ${isRTL ? "flex-row" : "flex-row-reverse"}`}
+            >
               <FaMapMarkerAlt className="text-primary" />
               <span>{t.qrSection.address}</span>
             </div>
@@ -110,9 +115,7 @@ const QrcodeSection = ({ locale }: { locale: Locale }) => {
         <h3 className="text-2xl font-bold mb-6 text-gray-800">
           {t.socialSection.title}
         </h3>
-        <p className="text-gray-600 mb-6">
-          {t.socialSection.description}
-        </p>
+        <p className="text-gray-600 mb-6">{t.socialSection.description}</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <Link

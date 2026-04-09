@@ -47,7 +47,7 @@ const translations = {
     },
   },
   en: {
-    companyName: "Amrak",
+    companyName: "AMRAC",
     companyDesc:
       "A leading company in engineering consultancy and urban planning, providing creative solutions that meet the highest quality standards.",
     quickLinks: {
@@ -65,7 +65,7 @@ const translations = {
       title: "Contact Us",
       moreServices: "More Services",
     },
-    footerBottom: `All Rights Reserved for Amrak Company`,
+    footerBottom: `All Rights Reserved for AMRAC Company`,
     hashtag: "#Think_Build",
     social: {
       facebook: "Facebook",

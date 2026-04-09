@@ -1,12 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import AOS from "aos";
-import {
-  Award,
-  CheckCircle,
-  TrendingUp,
-  Globe,
-} from "lucide-react";
+import { Award, CheckCircle, TrendingUp, Globe } from "lucide-react";
 import Image from "next/image";
 import image1 from "../../../public/about/metallic-sculpture-city.jpg.jpeg";
 import image2 from "../../../public/about/modern-buildings-boats-san-diego-usa.jpg.jpeg";
@@ -18,54 +13,60 @@ const translations = {
   ar: {
     title: "عن أمراك",
     subtitle: "رؤية – رسالة – تميّز",
-    description: "شركة <strong>أمراك</strong> متخصصة في تقديم الحلول والاستشارات الهندسية بخبرة تمتد لأكثر من عقد ونصف في السوق المحلي والإقليمي، حيث نقدم خدمات دقيقة ترتكز على فهم احتياجات العملاء وتطبيق أحدث المعايير العالمية لتحقيق أعلى مستويات الجودة.",
+    description:
+      "شركة أمراك متخصصة في تقديم الحلول والاستشارات الهندسية بخبرة تمتد لأكثر من عقد ونصف في السوق المحلي والإقليمي، حيث نقدم خدمات دقيقة ترتكز على فهم احتياجات العملاء وتطبيق أحدث المعايير العالمية لتحقيق أعلى مستويات الجودة.",
     vision: {
       title: "رؤيتنا",
-      description: "أن نكون الخيار الموثوق في الاستشارات الهندسية بمصر والمنطقة، من خلال تقديم حلول ذكية ومستدامة تعزز جودة المشاريع من البداية وحتى التنفيذ."
+      description:
+        "أن نكون الخيار الموثوق في الاستشارات الهندسية بمصر والمنطقة، من خلال تقديم حلول ذكية ومستدامة تعزز جودة المشاريع من البداية وحتى التنفيذ.",
     },
     mission: {
       title: "رسالتنا",
-      description: "تسعى أمراك لتكون إحدى العلامات البارزة في صناعة التصميم المعماري والهندسي في مصر والمنطقة، من خلال التزامها بالجودة، والحفاظ على الطابع المحلي الأصيل، والتطلع الدائم نحو التميز والريادة."
+      description:
+        "تسعى أمراك لتكون إحدى العلامات البارزة في صناعة التصميم المعماري والهندسي في مصر والمنطقة، من خلال التزامها بالجودة، والحفاظ على الطابع المحلي الأصيل، والتطلع الدائم نحو التميز والريادة.",
     },
     stats: [
       { label: "عامًا من الخبرة" },
       { label: "مشروع ناجح" },
-      { label: "عميل راضٍ" }
+      { label: "عميل راضٍ" },
     ],
     imageAlt1: "تصميم معماري",
     imageAlt2: "مخططات",
     imageAlt3: "فريق العمل",
     experienceCard: "+15 عام من الخبرة",
-    experienceDesc: "في التصميم والاستشارات الهندسية"
+    experienceDesc: "في التصميم والاستشارات الهندسية",
   },
   en: {
-    title: "About Amrak",
+    title: "About AMRAC",
     subtitle: "Vision – Mission – Excellence",
-    description: "<strong>Amrak</strong> is a specialized company providing engineering solutions and consultations with over a decade and a half of experience in local and regional markets. We offer precise services based on understanding client needs and applying the latest international standards to achieve the highest levels of quality.",
+    description:
+      "AMRAC is a specialized company providing engineering solutions and consultations with over a decade and a half of experience in local and regional markets. We offer precise services based on understanding client needs and applying the latest international standards to achieve the highest levels of quality.",
     vision: {
       title: "Our Vision",
-      description: "To be the trusted choice in engineering consultancy in Egypt and the region, by providing smart and sustainable solutions that enhance project quality from start to execution."
+      description:
+        "To be the trusted choice in engineering consultancy in Egypt and the region, by providing smart and sustainable solutions that enhance project quality from start to execution.",
     },
     mission: {
       title: "Our Mission",
-      description: "Amrak strives to be one of the leading brands in architectural and engineering design in Egypt and the region, through its commitment to quality, preservation of authentic local character, and continuous pursuit of excellence and leadership."
+      description:
+        "AMRAC strives to be one of the leading brands in architectural and engineering design in Egypt and the region, through its commitment to quality, preservation of authentic local character, and continuous pursuit of excellence and leadership.",
     },
     stats: [
       { label: "Years of Experience" },
       { label: "Successful Projects" },
-      { label: "Happy Clients" }
+      { label: "Happy Clients" },
     ],
     imageAlt1: "Architectural design",
     imageAlt2: "Plans and blueprints",
     imageAlt3: "Team work",
     experienceCard: "+15 Years of Experience",
-    experienceDesc: "in Design & Engineering Consulting"
-  }
+    experienceDesc: "in Design & Engineering Consulting",
+  },
 };
 
 const AboutSection = ({ locale }: { locale: Locale }) => {
   const t = translations[locale];
-  const isRTL = locale === 'ar';
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     AOS.init({
@@ -130,8 +131,8 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
               >
                 <p className="text-lg leading-relaxed text-gray-700">
                   {t.description.replace(
-                    "<strong>أمراك</strong>",
-                    `<strong className="text-primary">${locale === 'ar' ? 'أمراك' : 'Amrak'}</strong>`
+                    "أمراك",
+                    `<strong className="text-primary">${locale === "ar" ? "أمراك" : "AMRAC"}</strong>`,
                   )}
                 </p>
               </div>
@@ -141,11 +142,15 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
                 data-aos="fade-right"
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 group"
               >
-                <div className={`flex items-start mb-4 ${isRTL ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`p-2 bg-primary/10 rounded-lg ${isRTL ? 'ml-4' : 'mr-4'}`}>
+                <div
+                  className={`flex items-start mb-4 ${isRTL ? "flex-row" : "flex-row-reverse"}`}
+                >
+                  <div
+                    className={`p-2 bg-primary/10 rounded-lg ${isRTL ? "ml-4" : "mr-4"}`}
+                  >
                     <Globe className="w-6 h-6 text-primary" />
                   </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className={isRTL ? "text-right" : "text-left"}>
                     <h3 className="font-bold text-lg mb-2">{t.vision.title}</h3>
                     <p className="text-gray-700">{t.vision.description}</p>
                   </div>
@@ -157,12 +162,18 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
                 data-aos="fade-right"
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 group"
               >
-                <div className={`flex items-start mb-4 ${isRTL ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`p-2 bg-amber-400/10 rounded-lg ${isRTL ? 'ml-4' : 'mr-4'}`}>
+                <div
+                  className={`flex items-start mb-4 ${isRTL ? "flex-row" : "flex-row-reverse"}`}
+                >
+                  <div
+                    className={`p-2 bg-amber-400/10 rounded-lg ${isRTL ? "ml-4" : "mr-4"}`}
+                  >
                     <Award className="w-6 h-6 text-amber-400" />
                   </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
-                    <h3 className="font-bold text-lg mb-2">{t.mission.title}</h3>
+                  <div className={isRTL ? "text-right" : "text-left"}>
+                    <h3 className="font-bold text-lg mb-2">
+                      {t.mission.title}
+                    </h3>
                     <p className="text-gray-700">{t.mission.description}</p>
                   </div>
                 </div>
@@ -171,17 +182,33 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
               {/* Stats */}
               <div data-aos="fade-up" className="grid grid-cols-3 gap-4">
                 {[
-                  { icon: <CheckCircle className="w-6 h-6" />, value: "+15", color: "text-primary" },
-                  { icon: <Award className="w-6 h-6" />, value: "+200", color: "text-blue-400" },
-                  { icon: <TrendingUp className="w-6 h-6" />, value: "+130", color: "text-green-400" },
+                  {
+                    icon: <CheckCircle className="w-6 h-6" />,
+                    value: "+15",
+                    color: "text-primary",
+                  },
+                  {
+                    icon: <Award className="w-6 h-6" />,
+                    value: "+200",
+                    color: "text-blue-400",
+                  },
+                  {
+                    icon: <TrendingUp className="w-6 h-6" />,
+                    value: "+130",
+                    color: "text-green-400",
+                  },
                 ].map((item, i) => (
                   <div
                     key={i}
                     className="bg-white p-4 rounded-xl shadow-md text-center"
                   >
-                    <div className={`${item.color} mb-2 flex justify-center`}>{item.icon}</div>
+                    <div className={`${item.color} mb-2 flex justify-center`}>
+                      {item.icon}
+                    </div>
                     <div className="text-2xl font-bold">{item.value}</div>
-                    <div className="text-sm text-gray-600">{t.stats[i].label}</div>
+                    <div className="text-sm text-gray-600">
+                      {t.stats[i].label}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -199,7 +226,9 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
                 />
               </div>
 
-              <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-60 w-2/3 h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}>
+              <div
+                className={`absolute ${isRTL ? "left-0" : "right-0"} top-60 w-2/3 h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}
+              >
                 <Image
                   width={400}
                   height={400}
@@ -209,7 +238,9 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
                 />
               </div>
 
-              <div className={`absolute ${isRTL ? 'right-0' : 'left-0'} bottom-0 w-2/3 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}>
+              <div
+                className={`absolute ${isRTL ? "right-0" : "left-0"} bottom-0 w-2/3 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white`}
+              >
                 <Image
                   width={400}
                   height={400}
@@ -220,7 +251,9 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
               </div>
 
               {/* Experience Card */}
-              <div className={`absolute -bottom-6 ${isRTL ? '-right-6' : '-left-6'} bg-white p-6 rounded-xl shadow-2xl w-72`}>
+              <div
+                className={`absolute -bottom-6 ${isRTL ? "-right-6" : "-left-6"} bg-white p-6 rounded-xl shadow-2xl w-72`}
+              >
                 <h3 className="font-bold text-lg mb-1">{t.experienceCard}</h3>
                 <p className="text-sm text-gray-600">{t.experienceDesc}</p>
               </div>
