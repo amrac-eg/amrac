@@ -132,7 +132,7 @@ const AboutSection = ({ locale }: { locale: Locale }) => {
                 <p className="text-lg leading-relaxed text-gray-700">
                   {t.description.replace(
                     "أمراك",
-                    `<strong className="text-primary">${locale === "ar" ? "أمراك" : "AMRAC"}</strong>`,
+                    `${locale === "ar" ? "أمراك" : "AMRAC"}`,
                   )}
                 </p>
               </div>
